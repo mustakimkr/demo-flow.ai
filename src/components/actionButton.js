@@ -3,8 +3,8 @@ import "../assets/css/actionButton.css";
 import UseDragEff from "./DnD/useDrag";
 
 const actionButton = (props) => {
-  const { collectedProps, drag } = UseDragEff(props.dragTrigger);
-  //console.log(collectedProps);
+  const { collectedDragProps, drag } = UseDragEff(props.dragTrigger);
+  // console.log(collectedDragProps);
 
   let svg = null;
   if (props.dragTrigger.type === "Text") {

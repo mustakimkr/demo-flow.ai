@@ -15,7 +15,9 @@ function flows(props) {
         }}
         lg={8}
       >
-        <DropHere />
+        <div>
+          <DropHere />
+        </div>
       </Col>
       <Col
         lg={4}

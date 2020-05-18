@@ -2,7 +2,7 @@ import React from "react";
 import { useDrop } from "react-dnd";
 
 export default function UseDropEff(accept, handleDrop) {
-  const [collectedProps, drop] = useDrop({
+  const [collectedDropProps, drop] = useDrop({
     accept,
     drop: (item, monitor) => handleDrop(item, monitor),
     collect: (monitor) => ({
@@ -11,5 +11,5 @@ export default function UseDropEff(accept, handleDrop) {
       isDrop: monitor.didDrop(),
     }),
   });
-  return { collectedProps, drop };
+  return { collectedDropProps, drop };
 }

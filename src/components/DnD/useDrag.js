@@ -1,13 +1,16 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { dragCollectionProps } from "../../store/actions";
+import store from "../../store";
 
 export default function UseDragEff(item) {
-  const [collectedProps, drag] = useDrag({
+  const [collectedDragProps, drag] = useDrag({
     item: item,
     // end: (item, monitor) => addFlow(monitor.getDropResult()),
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
-  return { collectedProps, drag };
+  store.dispatch(dragCollectionProps(collectedDragProps));
+  return { collectedDragProps, drag };
 }

@@ -1,27 +1,45 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../assets/css/flowCard.css";
 import UseDragEff from "./DnD/useDrag";
 import { ItemTypes } from "./DnD/consts/ItemTypes";
 import UseDropEff from "./DnD/useDrop";
-import setFlowsClild from "../components/DnD/setflowsChild";
+import handleFlowCard from "../components/DnD/handleFlowCard";
 
 export default function FlowCard(props) {
+  const [cardText, setCardText] = useState("");
+  const ref = useRef(null);
+  //Handle Drag
   const { collectedDragProps, drag } = UseDragEff({
     id: 1,
     type: ItemTypes.TRIGGER_FLOW_CARD,
   });
-  const { flowsClildren, setflowsClildren, handleDrop } = setFlowsClild();
+  //Handle Drop
+  const { flowCard, setFlowCard, handleDrop } = handleFlowCard(
+    collectedDragProps.isDragging
+  );
   const accept = [ItemTypes.TRIGGER_FLOW_CARD];
   const { collectedDropProps, drop } = UseDropEff(accept, handleDrop);
 
-  return (
-    <div
-      className="_1wm26yt"
-      draggable="true"
-      id={props.targetId}
-      ref={drop}
-      ref={drag}
-    >
+  // set class to previwed dropzoon
+  if (collectedDragProps.isDragging == true) {
+    document.querySelectorAll("._1qbqxqi").forEach((el) => {
+      el.classList.remove("_1qbqxqi");
+      el.classList.add("_sdt4d52");
+    });
+  } else {
+    document.querySelectorAll("._sdt4d52").forEach((el) => {
+      el.classList.add("_1qbqxqi");
+      el.classList.remove("_sdt4d52");
+    });
+  }
+
+  console.log(collectedDragProps);
+
+  drag(drop(ref));
+  return flowCard ? (
+    flowCard
+  ) : (
+    <div className="_1wm26yt" draggable="true" id={props.targetId} ref={ref}>
       <div className="_eaywwnd">
         <div className="_wnmcvr">
           <header className="_1o1vgd9">
@@ -247,7 +265,8 @@ export default function FlowCard(props) {
                 overflowWrap: "break-word",
                 height: 16,
               }}
-              defaultValue={""}
+              value={cardText}
+              onChange={(e) => setCardText(e.target.value)}
             />
             <a href="#" className="_1se5c7a">
               Train
@@ -255,7 +274,7 @@ export default function FlowCard(props) {
           </div>
         </div>
       </div>
-      <div className="_1qbqxqi" />
+      <div className="_1qbqxqi"></div>
     </div>
   );
 }

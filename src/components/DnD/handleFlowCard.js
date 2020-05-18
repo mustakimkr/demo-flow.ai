@@ -3,10 +3,10 @@ import DropHere from "../dropHere.js";
 import FlowCard from "../flowCard.js";
 import ConditionsFlow from "../conditionsFlow";
 
-function SetFlowsChild() {
+function HandleFlowCard(isDragging) {
   const handleDrop = (item, monitor) => {
     console.log(monitor, item);
-    setflowsClildren(
+    setFlowCard(
       monitor.targetId === "T0" ? (
         <div className="_rz4cq8" style={{ transform: "scale(1)" }}>
           <div className="_xn0spvi">
@@ -19,34 +19,20 @@ function SetFlowsChild() {
                 />
               </svg>
             </i>
-            {item.id == 1 ? (
-              <React.Fragment>
-                <FlowCard targetId={monitor.targetId} handleDrop={handleDrop} />
-                <DropHere handleDrop={handleDrop} />
-              </React.Fragment>
-            ) : (
-              <ConditionsFlow handleDrop={handleDrop} />
-            )}
+            <FlowCard targetId={monitor.targetId} handleDrop={handleDrop} />
           </div>
         </div>
       ) : (
         <div className="_rz4cq8" style={{ transform: "scale(1)", padding: 0 }}>
           <div className="_xn0spvi" style={{ padding: 0 }}>
-            {item.id == 1 ? (
-              <React.Fragment>
-                <FlowCard targetId={monitor.targetId} handleDrop={handleDrop} />
-                <DropHere handleDrop={handleDrop} />
-              </React.Fragment>
-            ) : (
-              <ConditionsFlow handleDrop={handleDrop} />
-            )}
+            <FlowCard targetId={monitor.targetId} handleDrop={handleDrop} />
           </div>
         </div>
       )
     );
   };
-  const [flowsClildren, setflowsClildren] = useState();
-  return { flowsClildren, setflowsClildren, handleDrop };
+  const [flowCard, setFlowCard] = useState();
+  return { flowCard, setFlowCard, handleDrop };
 }
 
-export default SetFlowsChild;
+export default HandleFlowCard;
