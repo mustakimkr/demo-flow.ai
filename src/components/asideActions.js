@@ -48,8 +48,8 @@ const asideActions = () => {
             </Col>
             <Col>
               <Row>
-                {draggbleTriggers.map((dragTrigger) => (
-                  <Col>
+                {draggbleTriggers.map((dragTrigger, id) => (
+                  <Col key={id}>
                     <ActionButton dragTrigger={dragTrigger} />
                   </Col>
                 ))}

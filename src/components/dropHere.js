@@ -1,24 +1,28 @@
 import React from "react";
 import { ItemTypes } from "./DnD/consts/ItemTypes";
 import UseDropEff from "./DnD/useDrop";
-import setFlowsClild from "../components/DnD/setflowsChild";
-import { connect } from "react-redux";
+
+import { useSelector, shallowEqual } from "react-redux";
+import DropChild from "./dropChild";
 
 function DropHere(props) {
-  const { flowsClildren, setflowsClildren, handleDrop } = setFlowsClild();
+  // const isDragging = useSelector(
+  //   (state) => state.dndProps.dragColProps.isDragging,
+  //   shallowEqual
+  // );
+  const isDragging = false;
   const accept = [
     ItemTypes.TRIGGER_TEXT,
     ItemTypes.TRIGGER_CONDITIONS,
     ItemTypes.TRIGGER_FLOW_CARD,
   ];
-  const { collectedDropProps, drop } = UseDropEff(accept, handleDrop);
-  const isDragging = props.dragProps.dragColProps.isDragging;
-  console.log(isDragging);
-  // let opacity = 0;
-  // if (isDragging) {
-  //   opacity = 1;
-  // }
+  const { collectedDropProps, drop } = UseDropEff(
+    accept,
+    props.handleDrop,
+    props.stepId
+  );
 
+  //  console.log(props.stepChild);
   return (
     <React.Fragment>
       <div
@@ -40,7 +44,7 @@ function DropHere(props) {
         <div ref={drop} style={{ width: "220px", margin: "0px auto" }}>
           <div
             style={
-              flowsClildren
+              props.stepChild.length !== 0
                 ? {
                     width: 220,
                     marginRight: "auto",
@@ -76,7 +80,7 @@ function DropHere(props) {
                   }
             }
           >
-            {flowsClildren ? (
+            {props.stepChild.length !== 0 ? (
               <div
                 style={{
                   opacity: isDragging ? 1 : 0,
@@ -93,16 +97,13 @@ function DropHere(props) {
             )}
           </div>
         </div>
-        {flowsClildren ? flowsClildren : null}
+
+        {props.stepChild !== 0 ? (
+          <DropChild handleDrop={props.handleDrop} steps={props.stepChild} />
+        ) : null}
       </div>
     </React.Fragment>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    dragProps: state.dragProps,
-  };
-};
-
-export default connect(mapStateToProps, null)(DropHere);
+export default DropHere;

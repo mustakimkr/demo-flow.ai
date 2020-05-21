@@ -90,213 +90,226 @@ function ConditionsFlow(props) {
             </i>
           </div>
           <div className="_3ogmth">
-            <section className="_bp34sw">
-              <div className="_1iaan0e">
-                <i className="_67zturf">
-                  <svg
-                    width="18px"
-                    height="30px"
-                    viewBox="0 0 18 30"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                  >
-                    <title>icon-branch-left</title>
-                    <desc>Created with Sketch.</desc>
-                    <defs />
-                    <g
-                      id="Page-1"
-                      stroke="none"
-                      strokeWidth={1}
-                      fill="none"
-                      fillRule="evenodd"
-                    >
-                      <g
-                        id="icon-condition-copy-4"
-                        transform="translate(0.000000, -50.000000)"
+            {props.steps.map((step, id) =>
+              id === 0 ? (
+                <section className="_bp34sw" key={id}>
+                  <div className="_1iaan0e">
+                    <i className="_67zturf">
+                      <svg
+                        width="18px"
+                        height="30px"
+                        viewBox="0 0 18 30"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
                       >
+                        <title>icon-branch-left</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs />
                         <g
-                          id="icon-branch-left"
-                          transform="translate(0.000000, 50.000000)"
+                          id="Page-1"
+                          stroke="none"
+                          strokeWidth={1}
+                          fill="none"
+                          fillRule="evenodd"
                         >
-                          <polygon
-                            id="filler"
-                            fill="#52525B"
-                            points="18 8.84261544 18 30 0 30 0 0 10.0495315 0 10.0495315 8.84261544"
-                          />
                           <g
-                            id="icon-branch-bottom"
-                            transform="translate(5.000000, 1.000000)"
-                            fill="#FFFFFF"
+                            id="icon-condition-copy-4"
+                            transform="translate(0.000000, -50.000000)"
                           >
-                            <path
-                              d="M5,13.746 L7.656,10.806 C7.73194799,10.7001165 7.85370528,10.6366394 7.984,10.635 C8.057,10.635 8.125,10.649 8.188,10.678 C8.25037218,10.7066404 8.30415638,10.7511158 8.344,10.807 C8.39664576,10.8537563 8.43685003,10.91286 8.461,10.979 C8.487,11.048 8.5,11.116 8.5,11.185 C8.49992101,11.2529987 8.48632413,11.3203033 8.46,11.383 C8.43442604,11.4455548 8.39472379,11.5013433 8.344,11.546 L4.5,15.86 L0.656,11.58 C0.55677225,11.4722618 0.50116685,11.3314661 0.5,11.185 C0.5,11.116 0.513,11.05 0.54,10.987 C0.567969935,10.9207451 0.607218128,10.8598427 0.656,10.807 C0.696119689,10.7509802 0.750262857,10.7064931 0.813,10.678 C0.871485789,10.6502993 0.935288915,10.6356279 1,10.635 C1.063,10.635 1.125,10.649 1.188,10.678 C1.25037218,10.7066404 1.30415638,10.7511158 1.344,10.807 L4,13.746 L4,0 L5,0 L5,13.746 Z"
-                              id="Shape"
-                            />
+                            <g
+                              id="icon-branch-left"
+                              transform="translate(0.000000, 50.000000)"
+                            >
+                              <polygon
+                                id="filler"
+                                fill="#52525B"
+                                points="18 8.84261544 18 30 0 30 0 0 10.0495315 0 10.0495315 8.84261544"
+                              />
+                              <g
+                                id="icon-branch-bottom"
+                                transform="translate(5.000000, 1.000000)"
+                                fill="#FFFFFF"
+                              >
+                                <path
+                                  d="M5,13.746 L7.656,10.806 C7.73194799,10.7001165 7.85370528,10.6366394 7.984,10.635 C8.057,10.635 8.125,10.649 8.188,10.678 C8.25037218,10.7066404 8.30415638,10.7511158 8.344,10.807 C8.39664576,10.8537563 8.43685003,10.91286 8.461,10.979 C8.487,11.048 8.5,11.116 8.5,11.185 C8.49992101,11.2529987 8.48632413,11.3203033 8.46,11.383 C8.43442604,11.4455548 8.39472379,11.5013433 8.344,11.546 L4.5,15.86 L0.656,11.58 C0.55677225,11.4722618 0.50116685,11.3314661 0.5,11.185 C0.5,11.116 0.513,11.05 0.54,10.987 C0.567969935,10.9207451 0.607218128,10.8598427 0.656,10.807 C0.696119689,10.7509802 0.750262857,10.7064931 0.813,10.678 C0.871485789,10.6502993 0.935288915,10.6356279 1,10.635 C1.063,10.635 1.125,10.649 1.188,10.678 C1.25037218,10.7066404 1.30415638,10.7511158 1.344,10.807 L4,13.746 L4,0 L5,0 L5,13.746 Z"
+                                  id="Shape"
+                                />
+                              </g>
+                              <path
+                                d="M10,0 L10,10 L9,10 L9,1 C9,0.44771525 9.44771525,-1.01453063e-16 10,0 Z"
+                                id="left-part"
+                                fill="#FFFFFF"
+                              />
+                            </g>
                           </g>
-                          <path
-                            d="M10,0 L10,10 L9,10 L9,1 C9,0.44771525 9.44771525,-1.01453063e-16 10,0 Z"
-                            id="left-part"
-                            fill="#FFFFFF"
-                          />
                         </g>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-              </div>
-              <div className="_49x36f">
-                <div className="_1f2sk2k">
-                  <div className="_1wm26yt" draggable="true">
-                    <div className="_1jzahh6">
-                      <div className="_onua9m">
-                        <div className="_1rf9dyl1">
-                          <i>
-                            <svg
-                              width="32px"
-                              height="32px"
-                              viewBox="0 0 32 32"
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlnsXlink="http://www.w3.org/1999/xlink"
-                            >
-                              <g
-                                id="Page-1"
-                                stroke="none"
-                                strokeWidth={1}
-                                fill="none"
-                                fillRule="evenodd"
-                              >
-                                <g
-                                  id="icon-condition-center-copy"
-                                  fill="#FFFFFF"
-                                  fillRule="nonzero"
-                                >
-                                  <g id="center">
-                                    <path
-                                      d="M2.56,16 L16,29.44 L29.44,16 L16,2.56 L2.56,16 Z M0,16 L16,0 L32,16 L16,32 L0,16 Z"
-                                      id="Rectangle-3"
-                                    />
-                                    <path
-                                      d="M13.4,13.4 L14.4653658,13.4 L14.4653658,19.64 L13.4,19.64 L13.4,13.4 Z M15.7759349,13.4 L19.64,13.4 L19.64,14.4047458 L16.8413008,14.4047458 L16.8413008,16.0440678 L19.4793496,16.0440678 L19.4793496,17.0488136 L16.8413008,17.0488136 L16.8413008,19.64 L15.7759349,19.64 L15.7759349,13.4 Z"
-                                      id="IF"
-                                    />
-                                  </g>
-                                </g>
-                              </g>
-                            </svg>
-                          </i>
-                          <span className="_fmaty5">A </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="_1ttegq05" />
+                      </svg>
+                    </i>
                   </div>
-                  <DragHere handleDrop={props.handleDrop} />
-                </div>
-              </div>
-            </section>
-            <section className="_bp34sw">
-              <div className="_1xb7htq">
-                <i className="_67zturf">
-                  <svg
-                    width="18px"
-                    height="30px"
-                    viewBox="0 0 18 30"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                  >
-                    <title>icon-branch-right</title>
-                    <desc>Created with Sketch.</desc>
-                    <defs />
-                    <g
-                      id="Page-1"
-                      stroke="none"
-                      strokeWidth={1}
-                      fill="none"
-                      fillRule="evenodd"
-                    >
-                      <g
-                        id="icon-condition-copy-4"
-                        transform="translate(-300.000000, -50.000000)"
+                  <div className="_49x36f">
+                    <div className="_1f2sk2k">
+                      <div className="_1wm26yt" draggable="true">
+                        <div className="_1jzahh6">
+                          <div className="_onua9m">
+                            <div className="_1rf9dyl1">
+                              <i>
+                                <svg
+                                  width="32px"
+                                  height="32px"
+                                  viewBox="0 0 32 32"
+                                  version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                                >
+                                  <g
+                                    id="Page-1"
+                                    stroke="none"
+                                    strokeWidth={1}
+                                    fill="none"
+                                    fillRule="evenodd"
+                                  >
+                                    <g
+                                      id="icon-condition-center-copy"
+                                      fill="#FFFFFF"
+                                      fillRule="nonzero"
+                                    >
+                                      <g id="center">
+                                        <path
+                                          d="M2.56,16 L16,29.44 L29.44,16 L16,2.56 L2.56,16 Z M0,16 L16,0 L32,16 L16,32 L0,16 Z"
+                                          id="Rectangle-3"
+                                        />
+                                        <path
+                                          d="M13.4,13.4 L14.4653658,13.4 L14.4653658,19.64 L13.4,19.64 L13.4,13.4 Z M15.7759349,13.4 L19.64,13.4 L19.64,14.4047458 L16.8413008,14.4047458 L16.8413008,16.0440678 L19.4793496,16.0440678 L19.4793496,17.0488136 L16.8413008,17.0488136 L16.8413008,19.64 L15.7759349,19.64 L15.7759349,13.4 Z"
+                                          id="IF"
+                                        />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </svg>
+                              </i>
+                              <span className="_fmaty5">A </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="_1ttegq05" />
+                      </div>
+                      <DragHere
+                        handleDrop={props.handleDrop}
+                        stepId={step.step_id}
+                        stepChild={step.children}
+                      />
+                    </div>
+                  </div>
+                </section>
+              ) : (
+                <section className="_bp34sw" key={id}>
+                  <div className="_1xb7htq">
+                    <i className="_67zturf">
+                      <svg
+                        width="18px"
+                        height="30px"
+                        viewBox="0 0 18 30"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
                       >
+                        <title>icon-branch-right</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs />
                         <g
-                          id="icon-branch-right"
-                          transform="translate(300.000000, 50.000000)"
+                          id="Page-1"
+                          stroke="none"
+                          strokeWidth={1}
+                          fill="none"
+                          fillRule="evenodd"
                         >
-                          <polygon
-                            id="filler"
-                            fill="#52525B"
-                            points="8.071866 0 18 0 18 30 0 30 0 8.88896523 8.071866 8.88896523"
-                          />
-                          <path
-                            d="M8,0 L8,0 C8.55228475,-1.01453063e-16 9,0.44771525 9,1 L9,10 L8,10 L8,0 Z"
-                            id="right-part"
-                            fill="#FFFFFF"
-                          />
-                          <path
-                            d="M9,14.746 L11.656,11.806 C11.731948,11.7001165 11.8537053,11.6366394 11.984,11.635 C12.057,11.635 12.125,11.649 12.188,11.678 C12.2503722,11.7066404 12.3041564,11.7511158 12.344,11.807 C12.3966458,11.8537563 12.43685,11.91286 12.461,11.979 C12.487,12.048 12.5,12.116 12.5,12.185 C12.499921,12.2529987 12.4863241,12.3203033 12.46,12.383 C12.434426,12.4455548 12.3947238,12.5013433 12.344,12.546 L8.5,16.86 L4.656,12.58 C4.55677225,12.4722618 4.50116685,12.3314661 4.5,12.185 C4.5,12.116 4.513,12.05 4.54,11.987 C4.56796993,11.9207451 4.60721813,11.8598427 4.656,11.807 C4.69611969,11.7509802 4.75026286,11.7064931 4.813,11.678 C4.87148579,11.6502993 4.93528891,11.6356279 5,11.635 C5.063,11.635 5.125,11.649 5.188,11.678 C5.25037218,11.7066404 5.30415638,11.7511158 5.344,11.807 L8,14.746 L8,1 L9,1 L9,14.746 Z"
-                            id="Shape"
-                            fill="#FFFFFF"
-                          />
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-              </div>
-              <div className="_49x36f">
-                <div className="_1f2sk2k">
-                  <div className="_1wm26yt" draggable="true">
-                    <div className="_1jzahh6">
-                      <div className="_onua9m">
-                        <div className="_1rf9dyl1">
-                          <i>
-                            <svg
-                              width="32px"
-                              height="32px"
-                              viewBox="0 0 32 32"
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                          <g
+                            id="icon-condition-copy-4"
+                            transform="translate(-300.000000, -50.000000)"
+                          >
+                            <g
+                              id="icon-branch-right"
+                              transform="translate(300.000000, 50.000000)"
                             >
-                              <g
-                                id="Page-1"
-                                stroke="none"
-                                strokeWidth={1}
-                                fill="none"
-                                fillRule="evenodd"
-                              >
-                                <g
-                                  id="icon-condition-center-copy"
-                                  fill="#FFFFFF"
-                                  fillRule="nonzero"
-                                >
-                                  <g id="center">
-                                    <path
-                                      d="M2.56,16 L16,29.44 L29.44,16 L16,2.56 L2.56,16 Z M0,16 L16,0 L32,16 L16,32 L0,16 Z"
-                                      id="Rectangle-3"
-                                    />
-                                    <path
-                                      d="M13.4,13.4 L14.4653658,13.4 L14.4653658,19.64 L13.4,19.64 L13.4,13.4 Z M15.7759349,13.4 L19.64,13.4 L19.64,14.4047458 L16.8413008,14.4047458 L16.8413008,16.0440678 L19.4793496,16.0440678 L19.4793496,17.0488136 L16.8413008,17.0488136 L16.8413008,19.64 L15.7759349,19.64 L15.7759349,13.4 Z"
-                                      id="IF"
-                                    />
-                                  </g>
-                                </g>
-                              </g>
-                            </svg>
-                          </i>
-                          <span className="_fmaty5">B </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="_1qbqxqi" />
+                              <polygon
+                                id="filler"
+                                fill="#52525B"
+                                points="8.071866 0 18 0 18 30 0 30 0 8.88896523 8.071866 8.88896523"
+                              />
+                              <path
+                                d="M8,0 L8,0 C8.55228475,-1.01453063e-16 9,0.44771525 9,1 L9,10 L8,10 L8,0 Z"
+                                id="right-part"
+                                fill="#FFFFFF"
+                              />
+                              <path
+                                d="M9,14.746 L11.656,11.806 C11.731948,11.7001165 11.8537053,11.6366394 11.984,11.635 C12.057,11.635 12.125,11.649 12.188,11.678 C12.2503722,11.7066404 12.3041564,11.7511158 12.344,11.807 C12.3966458,11.8537563 12.43685,11.91286 12.461,11.979 C12.487,12.048 12.5,12.116 12.5,12.185 C12.499921,12.2529987 12.4863241,12.3203033 12.46,12.383 C12.434426,12.4455548 12.3947238,12.5013433 12.344,12.546 L8.5,16.86 L4.656,12.58 C4.55677225,12.4722618 4.50116685,12.3314661 4.5,12.185 C4.5,12.116 4.513,12.05 4.54,11.987 C4.56796993,11.9207451 4.60721813,11.8598427 4.656,11.807 C4.69611969,11.7509802 4.75026286,11.7064931 4.813,11.678 C4.87148579,11.6502993 4.93528891,11.6356279 5,11.635 C5.063,11.635 5.125,11.649 5.188,11.678 C5.25037218,11.7066404 5.30415638,11.7511158 5.344,11.807 L8,14.746 L8,1 L9,1 L9,14.746 Z"
+                                id="Shape"
+                                fill="#FFFFFF"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </i>
                   </div>
-                  <DragHere handleDrop={props.handleDrop} />
-                </div>
-              </div>
-            </section>
+                  <div className="_49x36f">
+                    <div className="_1f2sk2k">
+                      <div className="_1wm26yt" draggable="true">
+                        <div className="_1jzahh6">
+                          <div className="_onua9m">
+                            <div className="_1rf9dyl1">
+                              <i>
+                                <svg
+                                  width="32px"
+                                  height="32px"
+                                  viewBox="0 0 32 32"
+                                  version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                                >
+                                  <g
+                                    id="Page-1"
+                                    stroke="none"
+                                    strokeWidth={1}
+                                    fill="none"
+                                    fillRule="evenodd"
+                                  >
+                                    <g
+                                      id="icon-condition-center-copy"
+                                      fill="#FFFFFF"
+                                      fillRule="nonzero"
+                                    >
+                                      <g id="center">
+                                        <path
+                                          d="M2.56,16 L16,29.44 L29.44,16 L16,2.56 L2.56,16 Z M0,16 L16,0 L32,16 L16,32 L0,16 Z"
+                                          id="Rectangle-3"
+                                        />
+                                        <path
+                                          d="M13.4,13.4 L14.4653658,13.4 L14.4653658,19.64 L13.4,19.64 L13.4,13.4 Z M15.7759349,13.4 L19.64,13.4 L19.64,14.4047458 L16.8413008,14.4047458 L16.8413008,16.0440678 L19.4793496,16.0440678 L19.4793496,17.0488136 L16.8413008,17.0488136 L16.8413008,19.64 L15.7759349,19.64 L15.7759349,13.4 Z"
+                                          id="IF"
+                                        />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </svg>
+                              </i>
+                              <span className="_fmaty5">B </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="_1qbqxqi" />
+                      </div>
+                      <DragHere
+                        handleDrop={props.handleDrop}
+                        stepId={step.step_id}
+                        stepChild={step.children}
+                      />
+                    </div>
+                  </div>
+                </section>
+              )
+            )}
           </div>
         </div>
       </nav>

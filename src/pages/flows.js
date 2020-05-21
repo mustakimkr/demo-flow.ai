@@ -3,8 +3,11 @@ import "../assets/css/flows.css";
 import { Row, Col } from "react-bootstrap";
 import AsideActions from "../components/asideActions";
 import DropHere from "../components/dropHere";
+import setFlowsClild from "../components/DnD/setflowsChild";
 
-function flows(props) {
+function Flows(props) {
+  const { steps, handleDrop } = setFlowsClild();
+
   return (
     <Row>
       <Col
@@ -16,7 +19,7 @@ function flows(props) {
         lg={8}
       >
         <div>
-          <DropHere />
+          <DropHere handleDrop={handleDrop} stepChild={steps} />
         </div>
       </Col>
       <Col
@@ -29,4 +32,4 @@ function flows(props) {
   );
 }
 
-export default flows;
+export default Flows;

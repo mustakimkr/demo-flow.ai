@@ -33,12 +33,10 @@ export default function FlowCard(props) {
     });
   }
 
-  console.log(collectedDragProps);
+  // console.log(props.targetId);
 
   drag(drop(ref));
-  return flowCard ? (
-    flowCard
-  ) : (
+  return (
     <div className="_1wm26yt" draggable="true" id={props.targetId} ref={ref}>
       <div className="_eaywwnd">
         <div className="_wnmcvr">
