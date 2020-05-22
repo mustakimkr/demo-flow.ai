@@ -33,11 +33,11 @@ function SetFlowsChild() {
     let step = {
       step_id: step_id++,
       type: item.type.toUpperCase(),
-      title: "flow-input",
+      title: null,
       item_id: item.id,
       children: [],
     };
-    console.log(stepId);
+    //  console.log(stepId);
     let step_id2 = step_id++;
 
     if (steps.length == 0) {

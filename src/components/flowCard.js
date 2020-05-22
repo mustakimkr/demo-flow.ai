@@ -6,32 +6,38 @@ import UseDropEff from "./DnD/useDrop";
 import handleFlowCard from "../components/DnD/handleFlowCard";
 
 export default function FlowCard(props) {
-  const [cardText, setCardText] = useState("");
+  const [cardText, setCardText] = useState(props.step.title);
+
   const ref = useRef(null);
   //Handle Drag
-  const { collectedDragProps, drag } = UseDragEff({
-    id: 1,
-    type: ItemTypes.TRIGGER_FLOW_CARD,
-  });
-  //Handle Drop
-  const { flowCard, setFlowCard, handleDrop } = handleFlowCard(
-    collectedDragProps.isDragging
+  const { collectedDragProps, drag } = UseDragEff(
+    {
+      id: 1,
+      type: ItemTypes.TRIGGER_FLOW_CARD,
+    },
+    props.targetId
   );
+  //Handle Drop
+  const { handleDrop } = handleFlowCard(collectedDragProps.isDragging);
   const accept = [ItemTypes.TRIGGER_FLOW_CARD];
-  const { collectedDropProps, drop } = UseDropEff(accept, handleDrop);
+  const { collectedDropProps, drop } = UseDropEff(
+    accept,
+    handleDrop,
+    props.targetId
+  );
 
-  // set class to previwed dropzoon
-  if (collectedDragProps.isDragging == true) {
-    document.querySelectorAll("._1qbqxqi").forEach((el) => {
-      el.classList.remove("_1qbqxqi");
-      el.classList.add("_sdt4d52");
-    });
-  } else {
-    document.querySelectorAll("._sdt4d52").forEach((el) => {
-      el.classList.add("_1qbqxqi");
-      el.classList.remove("_sdt4d52");
-    });
-  }
+  // // set class to previwed dropzoon
+  // if (collectedDragProps.isDragging == true) {
+  //   document.querySelectorAll("._1qbqxqi").forEach((el) => {
+  //     el.classList.remove("_1qbqxqi");
+  //     el.classList.add("_sdt4d52");
+  //   });
+  // } else {
+  //   document.querySelectorAll("._sdt4d52").forEach((el) => {
+  //     el.classList.add("_1qbqxqi");
+  //     el.classList.remove("_sdt4d52");
+  //   });
+  // }
 
   // console.log(props.targetId);
 
@@ -263,8 +269,11 @@ export default function FlowCard(props) {
                 overflowWrap: "break-word",
                 height: 16,
               }}
-              value={cardText}
-              onChange={(e) => setCardText(e.target.value)}
+              value={props.step.title}
+              onChange={(e) => {
+                setCardText(e.target.value);
+                props.step.title = e.target.value;
+              }}
             />
             <a href="#" className="_1se5c7a">
               Train

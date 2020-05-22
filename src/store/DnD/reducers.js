@@ -1,4 +1,4 @@
-import { DRAG_COLLOCTION_PROPS } from "./actionTypes";
+import { DRAG_COLLOCTION_PROPS, DRAG_END_PROPS } from "./actionTypes";
 
 const initialState = {
   dragColProps: {},
@@ -12,7 +12,12 @@ const dndProps = (state = initialState, action) => {
         dragColProps: action.payload,
       };
       break;
-
+    case DRAG_END_PROPS:
+      state = {
+        ...state,
+        drag_id: action.payload,
+      };
+      break;
     default:
       state = { ...state };
       break;

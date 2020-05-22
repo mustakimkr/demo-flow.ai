@@ -1,15 +1,14 @@
 import React from "react";
 import { ItemTypes } from "./DnD/consts/ItemTypes";
 import UseDropEff from "./DnD/useDrop";
-
 import { useSelector, shallowEqual } from "react-redux";
 import DropChild from "./dropChild";
 
 function DropHere(props) {
-  // const isDragging = useSelector(
+  // useSelector(
   //   (state) => state.dndProps.dragColProps.isDragging,
   //   shallowEqual
-  // );
+  // )
   const isDragging = false;
   const accept = [
     ItemTypes.TRIGGER_TEXT,

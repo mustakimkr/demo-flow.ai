@@ -4,10 +4,7 @@ import ConditionsFlow from "./conditionsFlow";
 import DropHere from "../components/dropHere";
 
 function DropChild(props) {
-  const steps = props.steps;
-
-  // console.log(steps);
-  return steps.map((step, id) =>
+  return props.steps.map((step, id) =>
     id === 0 ? (
       <div
         key={id}
@@ -34,7 +31,11 @@ function DropChild(props) {
           ) : null}
           {step.item_id == 1 ? (
             <React.Fragment>
-              <FlowCard targetId={step.step_id} handleDrop={props.handleDrop} />
+              <FlowCard
+                targetId={step.step_id}
+                handleDrop={props.handleDrop}
+                step={step}
+              />
               <DropHere
                 handleDrop={props.handleDrop}
                 stepId={step.step_id}
@@ -42,7 +43,7 @@ function DropChild(props) {
               />
             </React.Fragment>
           ) : (
-            <ConditionsFlow handleDrop={props.handleDrop} steps={steps} />
+            <ConditionsFlow handleDrop={props.handleDrop} steps={props.steps} />
           )}
         </div>
       </div>
