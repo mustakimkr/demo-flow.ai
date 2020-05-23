@@ -97,7 +97,7 @@ function DropHere(props) {
           </div>
         </div>
 
-        {props.stepChild !== 0 ? (
+        {props.stepChild.length !== 0 ? (
           <DropChild handleDrop={props.handleDrop} steps={props.stepChild} />
         ) : null}
       </div>

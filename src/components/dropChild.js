@@ -42,9 +42,10 @@ function DropChild(props) {
                 stepChild={step.children}
               />
             </React.Fragment>
-          ) : (
+          ) : null}
+          {step.item_id == 2 ? (
             <ConditionsFlow handleDrop={props.handleDrop} steps={props.steps} />
-          )}
+          ) : null}
         </div>
       </div>
     ) : null

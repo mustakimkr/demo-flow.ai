@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import AsideActions from "../components/asideActions";
 import DropHere from "../components/dropHere";
 import setFlowsClild from "../components/DnD/setflowsChild";
+import SaveFlow from "../components/saveFlow";
 
 function Flows(props) {
   const { steps, handleDrop } = setFlowsClild();
@@ -18,6 +19,7 @@ function Flows(props) {
         }}
         lg={8}
       >
+        <SaveFlow />
         <div>
           <DropHere handleDrop={handleDrop} stepChild={steps} />
         </div>

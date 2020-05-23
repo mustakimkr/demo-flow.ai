@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { addFlowsStep } from "../../store/actions";
+import { findStep } from "../doFunctions";
 
-function HandleFlowCard(isDragging) {
+function HandleFlowCard(steps, dragId) {
   const dispatch = useDispatch();
-  const dragId = useSelector((state) => state.dndProps.drag_id, shallowEqual);
-  const steps = useSelector((state) => state.flow.steps, shallowEqual);
 
-  let foundItem = null;
-  const find = (steps, stepId) => {
-    steps.forEach((element) => {
-      if (element.step_id === stepId) {
-        return (foundItem = element);
-      } else {
-        return find(element.children, stepId);
-      }
-    });
-    return foundItem;
-  };
+  //console.log(dragId);
+
   const moveItem = (steps, dragItem, dropItem) => {
-    const newSteps = steps;
-    newSteps.forEach((element) => {
+    steps.forEach((element) => {
       if (element.step_id === dragItem.step_id) {
         element.step_id = dropItem.step_id;
         element.type = dropItem.type;
@@ -36,13 +25,14 @@ function HandleFlowCard(isDragging) {
     });
   };
   const handleDrop = (item, monitor, dropId) => {
-    console.log(steps);
-    const dragItem = find(steps, dragId);
-    const dropItem = find(steps, dropId);
+    const dragItem = findStep(steps, dragId);
+    const dropItem = findStep(steps, dropId);
 
-    moveItem(steps, dragItem, dropItem);
-    console.log(steps);
-    dispatch(addFlowsStep(steps));
+    const newSteps = JSON.parse(JSON.stringify(steps)); //deep copy
+
+    moveItem(newSteps, dragItem, dropItem);
+
+    dispatch(addFlowsStep(newSteps));
   };
 
   return { handleDrop };

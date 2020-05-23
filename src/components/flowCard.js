@@ -4,8 +4,14 @@ import UseDragEff from "./DnD/useDrag";
 import { ItemTypes } from "./DnD/consts/ItemTypes";
 import UseDropEff from "./DnD/useDrop";
 import handleFlowCard from "../components/DnD/handleFlowCard";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { addFlowsStep } from "../store/actions";
+import { findStep, removeStep } from "./doFunctions";
 
 export default function FlowCard(props) {
+  const dispatch = useDispatch();
+  const steps = useSelector((state) => state.flow.steps, shallowEqual);
+  const dragId = useSelector((state) => state.dndProps.drag_id, shallowEqual);
   const [cardText, setCardText] = useState(props.step.title);
 
   const ref = useRef(null);
@@ -18,7 +24,7 @@ export default function FlowCard(props) {
     props.targetId
   );
   //Handle Drop
-  const { handleDrop } = handleFlowCard(collectedDragProps.isDragging);
+  const { handleDrop } = handleFlowCard(steps, dragId);
   const accept = [ItemTypes.TRIGGER_FLOW_CARD];
   const { collectedDropProps, drop } = UseDropEff(
     accept,
@@ -39,7 +45,34 @@ export default function FlowCard(props) {
   //   });
   // }
 
-  // console.log(props.targetId);
+  let foundItem = null;
+  const findStep = (steps, stepId) => {
+    steps.forEach((element) => {
+      if (element.step_id === stepId) {
+        return (foundItem = element);
+      } else {
+        return findStep(element.children, stepId);
+      }
+    });
+    return foundItem;
+  };
+  const removeStep = (steps, removeItem) => {
+    steps.forEach((step, i) => {
+      if (step.step_id == removeItem.step_id) {
+        steps.splice(i, 1, ...step.children);
+      } else {
+        removeStep(step.children, removeItem);
+      }
+    });
+  };
+
+  const removeCard = () => {
+    const removeItem = findStep(steps, props.targetId);
+
+    removeStep(steps, removeItem);
+    const newSteps = JSON.parse(JSON.stringify(steps));
+    dispatch(addFlowsStep(newSteps));
+  };
 
   drag(drop(ref));
   return (
@@ -131,16 +164,16 @@ export default function FlowCard(props) {
               onClick={() => {
                 if (
                   document
-                    .querySelector(`._1c7soczr.${props.targetId}`)
+                    .querySelector(`#card_menu_${props.targetId}`)
                     .classList.value.includes("active")
                 ) {
                   return document
-                    .querySelector(`._1c7soczr.${props.targetId}`)
+                    .querySelector(`#card_menu_${props.targetId}`)
                     .classList.remove("active");
                 }
 
                 document
-                  .querySelector(`._1c7soczr.${props.targetId}`)
+                  .querySelector(`#card_menu_${props.targetId}`)
                   .classList.add("active");
               }}
             >
@@ -166,7 +199,7 @@ export default function FlowCard(props) {
                     </div>
                   </div>
                 </span>
-                <span className={`_1c7soczr ${props.targetId}`}>
+                <span className="_1c7soczr" id={`card_menu_${props.targetId}`}>
                   <div className="_1s17xks">
                     <div className="_yxh25i0">
                       <a className="_1whwlhg" href="/">
@@ -205,19 +238,7 @@ export default function FlowCard(props) {
                           <span className="_xh1roz">Train</span>
                         </div>
                       </a>
-                      <a
-                        className="_1xjtd7z7"
-                        onClick={(e) => {
-                          document
-                            .querySelectorAll(`#${props.targetId}`)
-                            .forEach((ele) => {
-                              ele.parentNode.style.padding = 0;
-                              ele.parentNode.parentNode.style.padding = 0;
-                              ele.style.display = "none";
-                              ele.style.height = 0;
-                            });
-                        }}
-                      >
+                      <a className="_1xjtd7z7" onClick={removeCard}>
                         <div className="_1rux9fe">
                           <i className="_hjc27n">
                             <svg
