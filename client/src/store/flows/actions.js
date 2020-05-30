@@ -1,4 +1,9 @@
-import { ADD_FLOWS_STEP, ADD_FLOW, FLOW_ADD_STATUS } from "./actionTypes";
+import {
+  ADD_FLOWS_STEP,
+  ADD_FLOW,
+  FLOW_ADD_STATUS,
+  CHANGE_ASIDE_BAR,
+} from "./actionTypes";
 
 export const addFlowsStep = (flowSteps) => {
   return {
@@ -15,6 +20,12 @@ export const addFlow = (flow) => {
 export const flowStatus = (payload) => {
   return {
     type: FLOW_ADD_STATUS,
+    payload,
+  };
+};
+export const changeAsideBar = (payload) => {
+  return {
+    type: CHANGE_ASIDE_BAR,
     payload,
   };
 };

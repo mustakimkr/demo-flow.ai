@@ -2,6 +2,7 @@ import React from "react";
 import FlowCard from "./flowCard.js";
 import ConditionsFlow from "./conditionsFlow";
 import DropHere from "../components/dropHere";
+import FlowImage from "../components/flowImage";
 
 function DropChild(props) {
   return props.steps.map((step, id) =>
@@ -45,6 +46,16 @@ function DropChild(props) {
           ) : null}
           {step.item_id == 2 ? (
             <ConditionsFlow handleDrop={props.handleDrop} steps={props.steps} />
+          ) : null}
+          {step.item_id == 3 || step.item_id == 4 ? (
+            <React.Fragment>
+              <FlowImage targetId={step.step_id} step={step} />
+              <DropHere
+                handleDrop={props.handleDrop}
+                stepId={step.step_id}
+                stepChild={step.children}
+              />
+            </React.Fragment>
           ) : null}
         </div>
       </div>

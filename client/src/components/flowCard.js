@@ -3,7 +3,7 @@ import "../assets/css/flowCard.css";
 import UseDragEff from "./DnD/useDrag";
 import { ItemTypes } from "./DnD/consts/ItemTypes";
 import UseDropEff from "./DnD/useDrop";
-import handleFlowCard from "../components/DnD/handleFlowCard";
+import handleFlowCard from "./DnD/handleFlowCard";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { addFlowsStep } from "../store/actions";
 import { findStep, removeStep } from "./doFunctions";
@@ -44,27 +44,6 @@ export default function FlowCard(props) {
   //     el.classList.remove("_sdt4d52");
   //   });
   // }
-
-  let foundItem = null;
-  const findStep = (steps, stepId) => {
-    steps.forEach((element) => {
-      if (element.step_id === stepId) {
-        return (foundItem = element);
-      } else {
-        return findStep(element.children, stepId);
-      }
-    });
-    return foundItem;
-  };
-  const removeStep = (steps, removeItem) => {
-    steps.forEach((step, i) => {
-      if (step.step_id == removeItem.step_id) {
-        steps.splice(i, 1, ...step.children);
-      } else {
-        removeStep(step.children, removeItem);
-      }
-    });
-  };
 
   const removeCard = () => {
     const removeItem = findStep(steps, props.targetId);
@@ -202,42 +181,6 @@ export default function FlowCard(props) {
                 <span className="_1c7soczr" id={`card_menu_${props.targetId}`}>
                   <div className="_1s17xks">
                     <div className="_yxh25i0">
-                      <a className="_1whwlhg" href="/">
-                        <div className="_1rux9fe">
-                          <i className="_hjc27n">
-                            <svg
-                              width="12px"
-                              height="16px"
-                              viewBox="0 0 12 16"
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlnsXlink="http://www.w3.org/1999/xlink"
-                            >
-                              <title>menu-training</title>
-                              <desc>Created with Sketch.</desc>
-                              <g
-                                id="Symbols"
-                                stroke="none"
-                                strokeWidth={1}
-                                fill="none"
-                                fillRule="evenodd"
-                              >
-                                <g
-                                  id="menu-training"
-                                  fill="#BABABE"
-                                  fillRule="nonzero"
-                                >
-                                  <path
-                                    d="M11.072,15.68 L2.432,15.68 C1.728,15.68 1.152,15.424 0.704,14.976 C0.256,14.528 0,13.952 0,13.312 L0,2.24 C0,2.112 0.064,1.984 0.128,1.92 C0.256,1.792 0.32,1.792 0.512,1.792 C0.64,1.792 0.704,1.792 0.832,1.92 C0.896,1.984 0.96,2.112 0.96,2.24 L0.96,13.312 C0.96,13.696 1.088,14.016 1.408,14.272 C1.664,14.592 1.984,14.72 2.432,14.72 L10.56,14.72 L10.56,4.16 L9.152,4.16 C8.96,4.16 8.896,4.096 8.768,4.032 C8.704,3.904 8.64,3.84 8.64,3.712 C8.64,3.52 8.704,3.456 8.768,3.328 C8.896,3.264 8.96,3.2 9.152,3.2 L11.072,3.2 C11.072,3.2 11.136,3.2 11.2,3.264 C11.264,3.264 11.328,3.328 11.392,3.328 C11.392,3.392 11.456,3.456 11.456,3.52 C11.52,3.584 11.52,3.648 11.52,3.712 L11.52,15.232 C11.52,15.36 11.456,15.424 11.392,15.552 C11.264,15.616 11.2,15.68 11.072,15.68 L11.072,15.68 Z M9.6,9.472 L7.232,7.616 L4.8,9.472 L4.8,2.24 L9.6,2.24 L9.6,9.472 Z M5.76,3.2 L5.76,7.552 L7.232,6.464 L8.64,7.552 L8.64,3.2 L5.76,3.2 Z M5.312,4.16 L1.92,4.16 C1.408,4.16 0.96,3.968 0.576,3.584 C0.192,3.2 0,2.752 0,2.24 C0,1.728 0.192,1.28 0.576,0.896 C0.96,0.512 1.408,0.32 1.92,0.32 L10.112,0.32 C10.24,0.32 10.304,0.384 10.432,0.448 C10.496,0.576 10.56,0.64 10.56,0.832 C10.56,0.96 10.496,1.024 10.432,1.152 C10.304,1.216 10.24,1.28 10.112,1.28 L1.92,1.28 C1.664,1.28 1.408,1.344 1.216,1.536 C1.024,1.728 0.96,1.984 0.96,2.24 C0.96,2.496 1.024,2.752 1.216,2.944 C1.408,3.136 1.664,3.2 1.92,3.2 L5.312,3.2 C5.44,3.2 5.504,3.264 5.632,3.328 C5.696,3.456 5.76,3.52 5.76,3.712 C5.76,3.84 5.696,3.904 5.632,4.032 C5.504,4.096 5.44,4.16 5.312,4.16 L5.312,4.16 Z"
-                                    id="Shape"
-                                  />
-                                </g>
-                              </g>
-                            </svg>
-                          </i>
-                          <span className="_xh1roz">Train</span>
-                        </div>
-                      </a>
                       <a className="_1xjtd7z7" onClick={removeCard}>
                         <div className="_1rux9fe">
                           <i className="_hjc27n">

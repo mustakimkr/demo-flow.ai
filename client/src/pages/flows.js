@@ -5,9 +5,16 @@ import AsideActions from "../components/asideActions";
 import DropHere from "../components/dropHere";
 import setFlowsClild from "../components/DnD/setflowsChild";
 import SaveFlow from "../components/saveFlow";
+import { useDispatch } from "react-redux";
+import { changeAsideBar } from "../store/actions";
 
 function Flows(props) {
+  const dispatch = useDispatch();
   const { steps, handleDrop } = setFlowsClild();
+
+  const handleAsideBar = () => {
+    dispatch(changeAsideBar({ status: "default" }));
+  };
 
   return (
     <Row>
@@ -18,6 +25,7 @@ function Flows(props) {
           overflow: "auto",
         }}
         lg={8}
+        onClick={handleAsideBar}
       >
         <SaveFlow />
 

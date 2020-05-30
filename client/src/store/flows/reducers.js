@@ -1,4 +1,9 @@
-import { ADD_FLOWS_STEP, ADD_FLOW, FLOW_ADD_STATUS } from "./actionTypes";
+import {
+  ADD_FLOWS_STEP,
+  ADD_FLOW,
+  FLOW_ADD_STATUS,
+  CHANGE_ASIDE_BAR,
+} from "./actionTypes";
 
 const initialState = {
   steps: [],
@@ -31,6 +36,21 @@ export const flow_status = (state = { status: false }, action) => {
       state = {
         ...state,
         status: action.payload,
+      };
+      break;
+    default:
+      state = { ...state };
+      break;
+  }
+  return state;
+};
+export const aside_bar = (state = { status: "default" }, action) => {
+  switch (action.type) {
+    case CHANGE_ASIDE_BAR:
+      state = {
+        ...state,
+        status: action.payload.status,
+        step_id: action.payload.step_id,
       };
       break;
     default:

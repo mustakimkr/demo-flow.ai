@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { addFlowsStep } from "../../store/actions";
 //import { findStep, removeStep } from "../doFunctions";
 
 let step_id = 100;
+
+const getLocation = () => {
+  return new Promise((res, rej) =>
+    navigator.geolocation.getCurrentPosition(res, rej)
+  );
+};
+
 function SetFlowsChild(props) {
   const dispatch = useDispatch();
   const steps = useSelector((state) => state.flow.steps, shallowEqual);
-  // console.log(steps);
+
+  const [locationCenter, setLocationCenter] = useState();
+  const getPosition = async (position) => {
+    if (navigator.geolocation) {
+      const location = await getLocation();
+
+      setLocationCenter({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude,
+      });
+    } else {
+      setLocationCenter({
+        lat: 23.8205708,
+        lng: 90.36542960000001,
+      });
+    }
+  };
+  getPosition();
 
   const setSteps = (steps, step, step_id2, stepId, item) => {
     steps.forEach((element) => {
@@ -25,7 +49,30 @@ function SetFlowsChild(props) {
           element.step_id == stepId &&
           item.type.toUpperCase() === "TEXT"
         ) {
-          return (element.children = [step]);
+          element.children = [step];
+
+          return;
+        } else if (
+          element.step_id == stepId &&
+          item.type.toUpperCase() === "IMAGE"
+        ) {
+          element.children = [
+            { ...step, url: "https://source.unsplash.com/random/880x460" },
+          ];
+
+          return;
+        } else if (
+          element.step_id == stepId &&
+          item.type.toUpperCase() === "MAP"
+        ) {
+          element.children = [
+            {
+              ...step,
+              center: locationCenter,
+            },
+          ];
+
+          return;
         } else if (
           element.step_id == stepId &&
           item.type.toUpperCase() === "FLOW-CARD"
@@ -59,6 +106,16 @@ function SetFlowsChild(props) {
         steps.push({
           ...step,
           step_id: step_id2,
+        });
+      } else if (item.type.toUpperCase() === "IMAGE") {
+        steps.push({
+          ...step,
+          url: "https://source.unsplash.com/random/880x460",
+        });
+      } else if (item.type.toUpperCase() === "MAP") {
+        steps.push({
+          ...step,
+          center: locationCenter,
         });
       } else {
         steps.push(step);

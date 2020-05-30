@@ -14,6 +14,8 @@ function DropHere(props) {
     ItemTypes.TRIGGER_TEXT,
     ItemTypes.TRIGGER_CONDITIONS,
     ItemTypes.TRIGGER_FLOW_CARD,
+    ItemTypes.TRIGGER_IMAGE,
+    ItemTypes.TRIGGER_MAP,
   ];
   const { collectedDropProps, drop } = UseDropEff(
     accept,
