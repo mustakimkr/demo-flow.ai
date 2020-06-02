@@ -5,33 +5,36 @@ import { addFlowsStep } from "../../store/actions";
 
 let step_id = 100;
 
-const getLocation = () => {
-  return new Promise((res, rej) =>
-    navigator.geolocation.getCurrentPosition(res, rej)
-  );
-};
+// const getLocation = () => {
+//   return new Promise((res, rej) =>
+//     navigator.geolocation.getCurrentPosition(res, rej)
+//   );
+// };
 
 function SetFlowsChild(props) {
   const dispatch = useDispatch();
   const steps = useSelector((state) => state.flow.steps, shallowEqual);
 
-  const [locationCenter, setLocationCenter] = useState();
-  const getPosition = async (position) => {
-    if (navigator.geolocation) {
-      const location = await getLocation();
+  const [locationCenter, setLocationCenter] = useState({
+    lat: 23.8205708,
+    lng: 90.36542960000001,
+  });
+  // const getPosition = async (position) => {
+  //   if (navigator.geolocation) {
+  //     const location = await getLocation();
 
-      setLocationCenter({
-        lat: location.coords.latitude,
-        lng: location.coords.longitude,
-      });
-    } else {
-      setLocationCenter({
-        lat: 23.8205708,
-        lng: 90.36542960000001,
-      });
-    }
-  };
-  getPosition();
+  //     setLocationCenter({
+  //       lat: location.coords.latitude,
+  //       lng: location.coords.longitude,
+  //     });
+  //   } else {
+  //     setLocationCenter({
+  //       lat: 23.8205708,
+  //       lng: 90.36542960000001,
+  //     });
+  //   }
+  // };
+  // getPosition();
 
   const setSteps = (steps, step, step_id2, stepId, item) => {
     steps.forEach((element) => {
